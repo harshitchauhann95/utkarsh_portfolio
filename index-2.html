@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utkarsh Chauhan — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F7F3EB;       /* page background */
+    --ivory-2:#F1EBDF;     /* slightly deeper panel tone */
+    --ink:#221F1B;         /* near-black warm charcoal, body text */
+    --emerald:#1E4638;     /* rich deep green, primary accent */
+    --gold:#A9834F;        /* soft aged gold, hairlines + small accents */
+    --gold-soft:#D8C6A1;   /* pale gold for subtle fills */
+    --muted:#847C6E;       /* secondary/caption text */
+    --line:#E1D8C4;        /* hairline rule */
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Jost',sans-serif;
+    font-weight:400;
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{background:var(--emerald);color:var(--ivory);}
+
+  h1,h2,h3,.serif{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+
+  .container{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  @media (max-width:640px){
+    .container{padding:0 24px;}
+  }
+
+  /* ---------- ornament / rule ---------- */
+  .rule{
+    width:100%;
+    height:1px;
+    background:var(--line);
+  }
+  .ornament{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:0 auto;
+    width:fit-content;
+  }
+  .ornament .stem{width:52px;height:1px;background:var(--gold);}
+  .ornament .mark{
+    width:6px;height:6px;
+    border:1px solid var(--gold);
+    transform:rotate(45deg);
+  }
+
+  /* ---------- top nav ---------- */
+  .topnav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(247,243,235,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav-inner{
+    max-width:960px;
+    margin:0 auto;
+    padding:22px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .topnav .mono-name{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:19px;
+  }
+  .topnav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+  }
+  .topnav a{
+    font-size:13px;
+    color:var(--muted);
+    transition:color .25s ease;
+    position:relative;
+  }
+  .topnav a:hover{color:var(--emerald);}
+  @media (max-width:640px){
+    .topnav ul{display:none;}
+    .topnav-inner{padding:18px 24px;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:110px 0 90px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:center;
+  }
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr; gap:48px;}
+  }
+
+  /* ============================================================
+     PROFILE PHOTO — REPLACE HERE
+     To use your own picture: change the src path below to your
+     image file (keep it inside the /assets folder, or update the
+     path to wherever your image lives). Recommended: a portrait
+     (taller-than-wide) photo, at least 1000px on the short side.
+     ============================================================ */
+  .portrait-frame{
+    position:relative;
+    padding:18px;
+    border:1px solid var(--gold);
+  }
+  .portrait-frame::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid var(--gold-soft);
+    pointer-events:none;
+  }
+  .portrait-frame img{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    object-position:center 18%;
+  }
+  .portrait-caption{
+    margin-top:16px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:13px;
+    color:var(--muted);
+    text-align:center;
+  }
+
+  .hero-copy .eyebrow{
+    font-size:13px;
+    color:var(--gold);
+    margin-bottom:22px;
+  }
+  .hero-copy h1{
+    font-size:clamp(38px, 5vw, 58px);
+    line-height:1.08;
+    margin-bottom:24px;
+  }
+  .hero-copy h1 em{
+    font-style:italic;
+    color:var(--emerald);
+    font-weight:500;
+  }
+  .hero-copy .intro{
+    max-width:440px;
+    color:var(--ink);
+    font-size:16.5px;
+  }
+  .hero-copy .role-line{
+    margin-top:28px;
+    display:flex;
+    gap:14px;
+    align-items:center;
+    font-size:13px;
+    color:var(--muted);
+  }
+  .hero-copy .role-line .dot{
+    width:5px;height:5px;background:var(--emerald);border-radius:50%;
+  }
+
+  /* ---------- sections ---------- */
+  section.panel{
+    padding:96px 0;
+    border-top:1px solid var(--line);
+  }
+  @media (max-width:640px){ section.panel{padding:72px 0;} }
+
+  .section-head{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 64px;
+  }
+  .section-head .num{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:14px;
+    color:var(--gold);
+    display:block;
+    margin-bottom:14px;
+  }
+  .section-head h2{
+    font-size:clamp(28px,3.4vw,38px);
+    margin-bottom:16px;
+  }
+  .section-head p{
+    color:var(--muted);
+    font-size:15px;
+  }
+
+  .col-body{
+    max-width:680px;
+    margin:0 auto;
+  }
+
+  h3.sub{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:19px;
+    color:var(--emerald);
+    margin:44px 0 18px;
+  }
+  h3.sub:first-child{margin-top:0;}
+
+  .col-body p{margin-bottom:18px; font-size:16px;}
+
+  ul.elegant{list-style:none;}
+  ul.elegant li{
+    position:relative;
+    padding-left:26px;
+    margin-bottom:14px;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  ul.elegant li::before{
+    content:"";
+    position:absolute;
+    left:0; top:9px;
+    width:10px;height:1px;
+    background:var(--gold);
+  }
+
+  blockquote.pull{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(21px,2.4vw,27px);
+    line-height:1.5;
+    color:var(--emerald);
+    text-align:center;
+    max-width:620px;
+    margin:56px auto;
+    padding:0 20px;
+  }
+
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  @media (max-width:640px){
+    .two-col{grid-template-columns:1fr; gap:8px;}
+  }
+
+  /* skills */
+  .skill-line{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:24px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .skill-line:first-of-type{border-top:1px solid var(--line);}
+  .skill-line .name{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:16px;
+  }
+  .skill-line .desc{color:var(--muted); font-size:14.5px;}
+  @media (max-width:640px){
+    .skill-line{grid-template-columns:1fr; gap:4px; padding:18px 0;}
+  }
+
+  /* certification cards */
+  .cert-pair{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-top:8px;
+  }
+  .cert-card{
+    border:1px solid var(--line);
+    padding:28px 26px;
+    background:var(--ivory-2);
+  }
+  .cert-card .status{
+    font-size:11px;
+    letter-spacing:0.04em;
+    color:var(--gold);
+    display:inline-block;
+    margin-bottom:12px;
+  }
+  .cert-card .name{
+    font-family:'Fraunces',serif;
+    font-size:16.5px;
+    font-weight:500;
+  }
+  @media (max-width:640px){ .cert-pair{grid-template-columns:1fr;} }
+
+  /* presence / contact */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-bottom:56px;
+  }
+  .contact-item{
+    background:var(--ivory);
+    padding:34px;
+    text-align:center;
+  }
+  .contact-item .label{
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:10px;
+  }
+  .contact-item .value{
+    font-family:'Fraunces',serif;
+    font-size:18px;
+  }
+  .contact-item .value a:hover{color:var(--emerald);}
+  @media (max-width:640px){ .contact-grid{grid-template-columns:1fr;} }
+
+  ul.maint{list-style:none; max-width:560px; margin:0 auto;}
+  ul.maint li{
+    display:flex;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14.5px;
+    color:var(--muted);
+  }
+  ul.maint li:first-child{border-top:1px solid var(--line);}
+  ul.maint li .mk{color:var(--emerald); font-family:'Fraunces',serif; font-style:italic;}
+
+  /* roadmap */
+  .roadmap{max-width:680px; margin:0 auto;}
+  .road-item{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:28px;
+    padding:30px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .road-item:first-child{border-top:1px solid var(--line);}
+  .road-item .yr{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:22px;
+    color:var(--emerald);
+  }
+  .road-item p{color:var(--muted); font-size:15px;}
+  @media (max-width:640px){
+    .road-item{grid-template-columns:1fr; gap:8px;}
+  }
+
+  /* closing */
+  .closing{
+    padding:120px 0 90px;
+    text-align:center;
+  }
+  .closing blockquote{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(24px,3.4vw,34px);
+    line-height:1.45;
+    max-width:740px;
+    margin:0 auto 56px;
+  }
+  .closing blockquote em{font-style:italic; color:var(--emerald);}
+  .signature-block{
+    display:inline-block;
+  }
+  .signature-block .name{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:26px;
+    margin-bottom:10px;
+  }
+  .signature-block .meta{
+    font-size:13px;
+    color:var(--muted);
+  }
+
+  footer{
+    padding:32px 0;
+    border-top:1px solid var(--line);
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="mono-name">Utkarsh Chauhan</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#objective">Objective</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#academic">Academic</a></li>
+      <li><a href="#presence">Presence</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      
+      <!--
+        ============================================================
+        PROFILE PHOTO GOES HERE
+        Replace "assets/profile-sepia.jpg" with the path to your
+        own image if you'd like to change it. The current image is
+        a warm charcoal/champagne-toned version of your uploaded
+        photo, made to match the page's colour palette.
+        For a different look, "assets/profile.jpg" (full colour)
+        is also included in the assets folder — just swap the path.
+        ============================================================
+      -->
+      <div class="portrait-frame">
+        <img src="3700.jpg.jpeg" alt="Portrait of Utkarsh Chauhan">
+      </div>
+      <div class="portrait-caption">Utkarsh Chauhan — Semester One</div>
+    </div>
+
+    <div class="hero-copy">
+      <div class="eyebrow">Portfolio · 2026</div>
+      <h1>A first chapter in <em>business</em>, written with intent.</h1>
+      <p class="intro">I am Utkarsh Chauhan, a first-year BBA (Core) student at Lovely Professional University, starting my business education with a strong interest in how organizations work, how teams operate effectively, and how clear communication drives success.</p>
+      <div class="role-line"><span class="dot"></span>BBA (Core), 1st Year — Lovely Professional University</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 01 ABOUT ============ -->
+<section class="panel" id="about">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">Chapter One</span>
+      <h2>About Me</h2>
+      <p>Who I am, where I am in my degree, and the values guiding my work.</p>
+    </div>
+
+    <div class="col-body">
+      <h3 class="sub">My Academic Journey</h3>
+      <p>As a first-semester student, my primary focus is to build a strong foundation in core business concepts, management principles, and professional communication. I am eager to explore different areas of business to identify my future specialization and long-term career goals.</p>
+
+      <h3 class="sub">Personal Strengths</h3>
+      <ul class="elegant">
+        <li>High willingness to learn, adapt, and improve continuously.</li>
+        <li>Positive, responsible, and structured approach to academic work.</li>
+        <li>Supportive team-player mindset with strong listening and interpersonal skills.</li>
+        <li>Practical, solution-oriented approach to understanding everyday business challenges.</li>
+      </ul>
+
+      <blockquote class="pull">"I value discipline, honesty, teamwork, and professional responsibility."</blockquote>
+      <p style="text-align:center; color:var(--muted); font-size:14.5px;">I believe that consistent effort, practical learning, and active participation are the keys to building a successful career.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 OBJECTIVE & VISION ============ -->
+<section class="panel" id="objective">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">Chapter Two</span>
+      <h2>Career Objective &amp; Vision</h2>
+      <p>What I am working toward during my BBA, and the professional I hope to become.</p>
+    </div>
+
+    <div class="col-body">
+      <h3 class="sub">Objective</h3>
+      <p>To develop solid business and management knowledge during my BBA program, improve my professional skills, gain practical exposure through coursework, and progressively build a strong professional profile.</p>
+
+      <h3 class="sub">My Vision</h3>
+      <p>My vision is to grow into a confident, capable business professional who can communicate effectively, work collaboratively in teams, and contribute meaningfully to organizational goals.</p>
+
+      <div class="two-col" style="margin-top:48px;">
+        <div>
+          <h3 class="sub" style="margin-top:0;">Short-Term Goals</h3>
+          <ul class="elegant">
+            <li>Build a strong academic foundation across all first-year business subjects.</li>
+            <li>Improve public speaking, presentation clarity, and formal business communication.</li>
+            <li>Learn key digital business tools, including Microsoft Excel, Word, and PowerPoint.</li>
+            <li>Enroll in beginner-level online certifications in business and management.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="sub" style="margin-top:0;">Long-Term Goals</h3>
+          <ul class="elegant">
+            <li>Secure meaningful summer internships to gain real industry exposure.</li>
+            <li>Identify a clear business specialization (such as Marketing, Human Resources, or Finance).</li>
+            <li>Build a strong professional network on LinkedIn and within the university.</li>
+            <li>Graduate with a strong professional resume and career plan.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 SKILLS ============ -->
+<section class="panel" id="skills">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">Chapter Three</span>
+      <h2>Skills &amp; Competencies</h2>
+      <p>What I bring today, and what I am deliberately building next.</p>
+    </div>
+
+    <div class="col-body">
+      <h3 class="sub" style="margin-top:0;">Current Skills</h3>
+      <div class="skill-line">
+        <div class="name">Communication</div>
+        <div class="desc">Developing clear written and spoken communication for academic discussions.</div>
+      </div>
+      <div class="skill-line">
+        <div class="name">Teamwork</div>
+        <div class="desc">Working well with classmates and contributing responsibly to group activities.</div>
+      </div>
+      <div class="skill-line">
+        <div class="name">Problem-Solving</div>
+        <div class="desc">Applying logical and organized thinking to address academic tasks.</div>
+      </div>
+      <div class="skill-line">
+        <div class="name">Time Management</div>
+        <div class="desc">Planning daily study schedules and meeting assignment deadlines consistently.</div>
+      </div>
+
+      <h3 class="sub">Skills I Plan to Develop</h3>
+      <div class="skill-line">
+        <div class="name">Excel &amp; Data</div>
+        <div class="desc">Microsoft Excel and basic data handling.</div>
+      </div>
+      <div class="skill-line">
+        <div class="name">Digital Marketing</div>
+        <div class="desc">Digital marketing and brand awareness fundamentals.</div>
+      </div>
+      <div class="skill-line">
+        <div class="name">Business Analytics</div>
+        <div class="desc">Business analytics basics.</div>
+      </div>
+      <div class="skill-line">
+        <div class="name">Leadership</div>
+        <div class="desc">Leadership, coordination, and professional networking.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 ACADEMIC FOCUS ============ -->
+<section class="panel" id="academic">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">Chapter Four</span>
+      <h2>Academic Focus &amp; Learning Plan</h2>
+      <p>What I am studying now, and how I am preparing for what comes after.</p>
+    </div>
+
+    <div class="col-body">
+      <p>As a first-semester student, I am currently focusing on core management coursework. I apply my learning through class activities, group discussions, and case study analysis.</p>
+
+      <div class="skill-line" style="margin-top:28px;">
+        <div class="name">Management Principles</div>
+        <div class="desc">Learning organizational structures, team dynamics, and leadership fundamentals.</div>
+      </div>
+      <div class="skill-line">
+        <div class="name">Business Communication</div>
+        <div class="desc">Developing presentation skills, professional email writing, and team collaboration.</div>
+      </div>
+      <div class="skill-line">
+        <div class="name">Practical Projects</div>
+        <div class="desc">Upcoming — academic coursework projects and presentation case studies will be documented here as they are assigned during the term.</div>
+      </div>
+
+      <h3 class="sub">Certification Target Plan</h3>
+      <p style="font-size:14.5px; color:var(--muted);">I am preparing to take beginner-level certification courses during my first year to complement my classroom learning:</p>
+      <div class="cert-pair">
+        <div class="cert-card">
+          <span class="status">Planned</span>
+          <div class="name">Fundamentals of Digital Marketing / Google Certification</div>
+        </div>
+        <div class="cert-card">
+          <span class="status">Planned</span>
+          <div class="name">Microsoft Excel for Business Basics</div>
+        </div>
+      </div>
+
+      <h3 class="sub">Internship Readiness Plan</h3>
+      <p>I am currently focusing on building fundamental academic skills. I plan to apply for internship opportunities starting in my second year as I build my core business background.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 PRESENCE ============ -->
+<section class="panel" id="presence">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">Chapter Five</span>
+      <h2>Professional Presence</h2>
+      <p>Where to find me, and how I will keep this portfolio current.</p>
+    </div>
+
+    <div class="col-body">
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="label">LinkedIn Profile</div>
+          <div class="value">[Insert LinkedIn Link Here]</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">Email Contact</div>
+          <div class="value"><a href="mailto:utkarshchauhan1085@gmail.com">utkarshchauhan1085@gmail.com</a></div>
+        </div>
+      </div>
+
+      <h3 class="sub" style="text-align:center;">Portfolio Maintenance Plan</h3>
+      <ul class="maint">
+        <li><span class="mk">i.</span><span>Update academic records and performance metrics at the end of every semester.</span></li>
+        <li><span class="mk">ii.</span><span>Document completed certifications immediately after earning them.</span></li>
+        <li><span class="mk">iii.</span><span>Record major academic presentations, group projects, and university activities.</span></li>
+        <li><span class="mk">iv.</span><span>Keep professional contact details up to date.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 ROADMAP ============ -->
+<section class="panel" id="roadmap">
+  <div class="container">
+    <div class="section-head">
+      <span class="num">Chapter Six</span>
+      <h2>Professional Growth Roadmap</h2>
+      <p>The three-year plan I am following through my degree.</p>
+    </div>
+
+    <div class="roadmap">
+      <div class="road-item">
+        <div class="yr">Year One</div>
+        <p>Focus on business fundamentals, communication skills, and digital tools.</p>
+      </div>
+      <div class="road-item">
+        <div class="yr">Year Two</div>
+        <p>Complete certifications, lead group assignments, and explore business specializations.</p>
+      </div>
+      <div class="road-item">
+        <div class="yr">Year Three</div>
+        <p>Complete summer internships, expand professional networking, and prepare for placement opportunities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing">
+  <div class="container">
+    <div class="ornament" style="margin-bottom:48px;">
+      <div class="stem"></div><div class="mark"></div><div class="stem"></div>
+    </div>
+    <blockquote>This portfolio represents the start of my professional journey as a BBA (Core) student at Lovely Professional University. I am dedicated to developing my skills <em>step-by-step</em> and keeping this document updated with genuine achievements as I progress through my degree.</blockquote>
+
+    <div class="signature-block">
+      <div class="name">Utkarsh Chauhan</div>
+      <div class="meta">BBA (Core), 1st Year (1st Semester) · Lovely Professional University</div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Utkarsh Chauhan — Portfolio, Semester One</footer>
+
+</body>
+</html>
